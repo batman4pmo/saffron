@@ -1,13 +1,9 @@
 Saffron::Application.routes.draw do
+
   get "pages/home"
-
-  get "pages/about"
-
-  get "pages/help"
-
+  get "pages/wiki"
+  get "pages/issues"
   get "pages/contact"
-
-  get "pages/news"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

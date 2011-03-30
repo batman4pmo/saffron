@@ -1,39 +1,49 @@
 require 'spec_helper'
 
 describe PagesController do
+  render_views
+
+  before(:each) do
+    @github_url = "http://github.com/bmaher/saffron"
+  end
 
   describe "GET 'home'" do
+
     it "should be successful" do
       get 'home'
       response.should be_success
     end
-  end
 
-  describe "GET 'about'" do
-    it "should be successful" do
-      get 'about'
-      response.should be_success
+    it "should have the right title" do
+      get 'home'
+      response.should have_selector("title", :content => "Saffron | Home")
     end
   end
 
-  describe "GET 'help'" do
-    it "should be successful" do
-      get 'help'
-      response.should be_success
+  describe "GET 'wiki'" do
+
+    it "should redirect to GitHub wiki page" do
+      get 'wiki'
+      response.code.should == "302"
+      response.should redirect_to("#{@github_url}/wiki")
     end
   end
 
   describe "GET 'contact'" do
-    it "should be successful" do
+
+    it "should redirect to GitHub project page" do
       get 'contact'
-      response.should be_success
+      response.code.should == "302"
+      response.should redirect_to("#{@github_url}")
     end
   end
 
-  describe "GET 'news'" do
-    it "should be successful" do
-      get 'news'
-      response.should be_success
+  describe "GET 'issues'" do
+
+    it "should redirect to GitHub issues page" do
+      get 'issues'
+      response.code.should == "302"
+      response.should redirect_to("#{@github_url}/issues")
     end
   end
 

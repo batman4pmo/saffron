@@ -1,17 +1,19 @@
 class PagesController < ApplicationController
+
   def home
+    @title = "Home"
   end
 
-  def about
+  def wiki
+    redirect_to("http://github.com/bmaher/saffron/wiki")
   end
 
-  def help
+  def issues
+    redirect_to("http://github.com/bmaher/saffron/issues")
   end
 
   def contact
-  end
-
-  def news
+    redirect_to("http://github.com/bmaher/saffron")
   end
 
 end
