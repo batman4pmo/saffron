@@ -1,0 +1,134 @@
+/* variables */
+/* application.html */
+/* line 11, ../../app/stylesheets/custom.scss */
+.container {
+  width: 1024px;
+}
+
+/* line 15, ../../app/stylesheets/custom.scss */
+header {
+  padding-top: 20px;
+}
+/* line 18, ../../app/stylesheets/custom.scss */
+header img {
+  padding: 1em;
+}
+
+/* line 21, ../../app/stylesheets/custom.scss */
+section {
+  margin-top: 1em;
+  font-size: 1.2em;
+  padding: 20px;
+}
+/* line 26, ../../app/stylesheets/custom.scss */
+section h1 {
+  font-size: 5em;
+}
+
+/* line 31, ../../app/stylesheets/custom.scss */
+a {
+  color: #993300;
+  text-decoration: none;
+}
+/* line 35, ../../app/stylesheets/custom.scss */
+a:hover {
+  color: #990000;
+  text-decoration: underline;
+}
+/* line 40, ../../app/stylesheets/custom.scss */
+a:visited {
+  color: #990000;
+}
+
+/* line 45, ../../app/stylesheets/custom.scss */
+nav {
+  float: right;
+  padding: 0 0.7em;
+  white-space: nowrap;
+}
+/* line 50, ../../app/stylesheets/custom.scss */
+nav ul {
+  margin: 0;
+  padding: 0;
+}
+/* line 54, ../../app/stylesheets/custom.scss */
+nav ul li {
+  list-style-type: none;
+  display: inline-block;
+  padding: 0.2em 0;
+}
+/* line 59, ../../app/stylesheets/custom.scss */
+nav ul li a {
+  padding: 0 5px;
+  font-weight: bold;
+}
+/* line 63, ../../app/stylesheets/custom.scss */
+nav ul li a:visited {
+  color: #990000;
+}
+/* line 67, ../../app/stylesheets/custom.scss */
+nav ul li a:hover {
+  text-decoration: underline;
+}
+
+/* line 75, ../../app/stylesheets/custom.scss */
+.round {
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+}
+
+/* line 81, ../../app/stylesheets/custom.scss */
+footer {
+  text-align: center;
+  margin-top: 35em;
+  width: 1024px;
+  margin-left: auto;
+  margin-right: auto;
+}
+/* line 88, ../../app/stylesheets/custom.scss */
+footer nav {
+  float: none;
+}
+/* line 91, ../../app/stylesheets/custom.scss */
+footer nav li {
+  padding: 0 15px;
+}
+/* line 95, ../../app/stylesheets/custom.scss */
+footer nav li a:visited {
+  color: #990000;
+}
+/* line 99, ../../app/stylesheets/custom.scss */
+footer nav li a:hover {
+  text-decoration: underline;
+}
+
+/* home.html */
+/* line 109, ../../app/stylesheets/custom.scss */
+.submit {
+  margin-left: 6.7em;
+  margin-top: 1em;
+}
+
+/* line 114, ../../app/stylesheets/custom.scss */
+.left {
+  float: left;
+}
+/* line 117, ../../app/stylesheets/custom.scss */
+.left .intro h1 {
+  color: #990000;
+}
+/* line 121, ../../app/stylesheets/custom.scss */
+.left .login {
+  padding-left: 5em;
+}
+/* line 124, ../../app/stylesheets/custom.scss */
+.left .login .open_id {
+  margin-left: 4em;
+}
+
+/* line 130, ../../app/stylesheets/custom.scss */
+.right {
+  float: right;
+  padding-top: 5em;
+}
