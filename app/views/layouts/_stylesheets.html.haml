@@ -1,0 +1,7 @@
+/[if lt IE 9]
+  %script{ :src => "http://html5shiv.googlecode.code/svn/trunk/html5.js" }
+= stylesheet_link_tag "screen.css", :media => "screen, projection"
+= stylesheet_link_tag "print.css", :media => "print"
+/[if lt IE 8]
+  = stylesheet_link_tag "ie.css", :media => "screen, projection"
+= stylesheet_link_tag "custom", :media => "screen"
