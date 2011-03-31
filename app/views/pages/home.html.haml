@@ -1,5 +1,37 @@
-%html
-  %head
-    %body
-      %h1 Saffron
-      %p Saffron allows you to track the QA elements of your software projects.
+.left
+  .intro
+    %h1 Saffron
+    %p Saffron allows you to track the QA elements of your software projects.
+
+  .login
+    %h2 Log in
+    .open_id
+
+      OpenID
+      %br
+      %input
+      %br
+      %input{ :type => "submit", :class => "submit", :value => "Log in" }
+
+.right
+  .sign_up
+    %h2 Sign up now!
+    .sign_up_form
+
+      OpenID
+      %br
+      %input
+      %a{ :href => "#"}
+        Don't have an OpenID? Get one here!
+      %br
+
+      Display Name
+      %br
+      %input
+      %br
+
+      Email Address
+      %br
+      %input
+      %br
+      %input{ :type => "submit", :class => "submit", :value => "Sign up" }

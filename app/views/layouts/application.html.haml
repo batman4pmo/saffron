@@ -3,9 +3,10 @@
   %head
     %title= title
     = csrf_meta_tag
-    = stylesheet_link_tag 'screen.css', :media => 'screen, projection'
-    = stylesheet_link_tag 'print.css', :media => 'print'
-    /[if lt IE 8]
-      = stylesheet_link_tag 'ie.css', :media => 'screen, projection'
+    = render "layouts/stylesheets"
 
-  %body= yield
+  %body
+    .container
+      = render "layouts/header"
+      %section= yield
+      = render "layouts/footer"
