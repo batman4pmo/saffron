@@ -1,11 +1,9 @@
 Saffron::Application.routes.draw do
 
-  get "pages/home"
-  get "pages/wiki"
-  get "pages/issues"
-  get "pages/contact"
-
   root :to => "pages#home"
+  match "/wiki", :to => "pages#wiki"
+  match "/issues", :to => "pages#issues"
+  match "/contact", :to => "pages#contact"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

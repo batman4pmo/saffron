@@ -13,7 +13,7 @@ class PagesController < ApplicationController
   end
 
   def contact
-    redirect_to "http://github.com/bmaher/saffron"
+    redirect_to "http://github.com/bmaher"
   end
 
 end
