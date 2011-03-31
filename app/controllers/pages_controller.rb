@@ -1,7 +1,7 @@
 class PagesController < ApplicationController
 
   def home
-    @title = "Homes"
+    @title = "Home"
   end
 
   def wiki
