@@ -1,12 +1,12 @@
 %header
-  = image_tag "logo.png", :alt => "Saffron", :width => 200, :height => 125
+  = link_to image_tag("logo.png", :alt => "Saffron", :width => 200, :height => 125), :action => 'home', :controller => 'pages'
   %nav.round
     %ul
       %li= link_to "Home", root_path
       %li= link_to "Wiki", wiki_path, :target => "_blank"
 
       - if current_user
-        %li= link_to current_user.name, root_path #User.find(current_user)
+        %li= link_to current_user.name, User.find(current_user)
         %li= link_to "Log out", logout_path
       - else
         %li= link_to "Log in", "/auth/open_id"

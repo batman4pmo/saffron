@@ -1,2 +1,12 @@
-=@user.name
-=@user.email
+.profile
+  %h1
+    = @user.name
+  .gravatar
+    = gravatar_for @user, :size => "150"
+  .email
+    %h3 Email
+    =@user.email
+  .projects
+    %h3 Projects
+    %ul
+      %li Project 1

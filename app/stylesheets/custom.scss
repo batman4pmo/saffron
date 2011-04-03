@@ -25,6 +25,7 @@ section {
 
     h1 {
         font-size: 5em;
+        color: $main-colour;
     }
 }
 
@@ -162,10 +163,6 @@ footer {
 .left {
     float: left;
 
-    .intro h1 {
-        color: $main-colour;
-    }
-
     .login {
         padding-left: 5em;
 
@@ -178,4 +175,12 @@ footer {
 .right {
     float: right;
     padding-top: 5em;
+}
+
+/* users#show.html */
+
+.profile {
+    img.gravatar {
+        border: 1px solid #999;
+    }
 }

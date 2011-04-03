@@ -23,62 +23,63 @@ section {
 /* line 26, ../../app/stylesheets/custom.scss */
 section h1 {
   font-size: 5em;
+  color: #990000;
 }
 
-/* line 31, ../../app/stylesheets/custom.scss */
+/* line 32, ../../app/stylesheets/custom.scss */
 a {
   color: #993300;
   text-decoration: none;
 }
-/* line 35, ../../app/stylesheets/custom.scss */
+/* line 36, ../../app/stylesheets/custom.scss */
 a:hover {
   color: #990000;
   text-decoration: underline;
 }
-/* line 40, ../../app/stylesheets/custom.scss */
+/* line 41, ../../app/stylesheets/custom.scss */
 a:visited {
   color: #990000;
 }
 
-/* line 45, ../../app/stylesheets/custom.scss */
+/* line 46, ../../app/stylesheets/custom.scss */
 nav {
   float: right;
   padding: 0 0.7em;
   white-space: nowrap;
 }
-/* line 50, ../../app/stylesheets/custom.scss */
+/* line 51, ../../app/stylesheets/custom.scss */
 nav ul {
   margin: 0;
   padding: 0;
 }
-/* line 54, ../../app/stylesheets/custom.scss */
+/* line 55, ../../app/stylesheets/custom.scss */
 nav ul li {
   list-style-type: none;
   display: inline-block;
   padding: 0.2em 0;
 }
-/* line 59, ../../app/stylesheets/custom.scss */
+/* line 60, ../../app/stylesheets/custom.scss */
 nav ul li a {
   padding: 0 5px;
   font-weight: bold;
 }
-/* line 63, ../../app/stylesheets/custom.scss */
+/* line 64, ../../app/stylesheets/custom.scss */
 nav ul li a:visited {
   color: #990000;
 }
-/* line 67, ../../app/stylesheets/custom.scss */
+/* line 68, ../../app/stylesheets/custom.scss */
 nav ul li a:hover {
   text-decoration: underline;
 }
 
-/* line 75, ../../app/stylesheets/custom.scss */
+/* line 76, ../../app/stylesheets/custom.scss */
 .round {
   -moz-border-radius: 10px;
   -webkit-border-radius: 10px;
   border-radius: 10px;
 }
 
-/* line 81, ../../app/stylesheets/custom.scss */
+/* line 82, ../../app/stylesheets/custom.scss */
 footer {
   text-align: center;
   margin-top: 35em;
@@ -86,48 +87,48 @@ footer {
   margin-left: auto;
   margin-right: auto;
 }
-/* line 88, ../../app/stylesheets/custom.scss */
+/* line 89, ../../app/stylesheets/custom.scss */
 footer nav {
   float: none;
 }
-/* line 91, ../../app/stylesheets/custom.scss */
+/* line 92, ../../app/stylesheets/custom.scss */
 footer nav li {
   padding: 0 15px;
 }
-/* line 95, ../../app/stylesheets/custom.scss */
+/* line 96, ../../app/stylesheets/custom.scss */
 footer nav li a:visited {
   color: #990000;
 }
-/* line 99, ../../app/stylesheets/custom.scss */
+/* line 100, ../../app/stylesheets/custom.scss */
 footer nav li a:hover {
   text-decoration: underline;
 }
 
-/* line 107, ../../app/stylesheets/custom.scss */
+/* line 108, ../../app/stylesheets/custom.scss */
 #flash_notice, #flash_error, #flash_alert {
   padding: 5px 8px;
   margin: 10px 0;
   clear: both;
 }
 
-/* line 113, ../../app/stylesheets/custom.scss */
+/* line 114, ../../app/stylesheets/custom.scss */
 #flash_notice {
   background-color: #CFC;
   border: solid 1px #6C6;
 }
 
-/* line 118, ../../app/stylesheets/custom.scss */
+/* line 119, ../../app/stylesheets/custom.scss */
 #flash_error, #flash_alert {
   background-color: #FCC;
   border: solid 1px #C66;
 }
 
-/* line 123, ../../app/stylesheets/custom.scss */
+/* line 124, ../../app/stylesheets/custom.scss */
 .fieldWithErrors {
   display: inline;
 }
 
-/* line 127, ../../app/stylesheets/custom.scss */
+/* line 128, ../../app/stylesheets/custom.scss */
 .error_messages {
   width: 400px;
   border: 2px solid #CF0000;
@@ -138,7 +139,7 @@ footer nav li a:hover {
   font-size: 12px;
 }
 
-/* line 137, ../../app/stylesheets/custom.scss */
+/* line 138, ../../app/stylesheets/custom.scss */
 .error_messages h2 {
   text-align: left;
   font-weight: bold;
@@ -149,42 +150,44 @@ footer nav li a:hover {
   color: #fff;
 }
 
-/* line 147, ../../app/stylesheets/custom.scss */
+/* line 148, ../../app/stylesheets/custom.scss */
 .error_messages p {
   margin: 8px 10px;
 }
 
-/* line 151, ../../app/stylesheets/custom.scss */
+/* line 152, ../../app/stylesheets/custom.scss */
 .error_messages ul {
   margin: 0;
 }
 
 /* home.html */
-/* line 157, ../../app/stylesheets/custom.scss */
+/* line 158, ../../app/stylesheets/custom.scss */
 .submit {
   margin-left: 6.7em;
   margin-top: 1em;
 }
 
-/* line 162, ../../app/stylesheets/custom.scss */
+/* line 163, ../../app/stylesheets/custom.scss */
 .left {
   float: left;
 }
-/* line 165, ../../app/stylesheets/custom.scss */
-.left .intro h1 {
-  color: #990000;
-}
-/* line 169, ../../app/stylesheets/custom.scss */
+/* line 166, ../../app/stylesheets/custom.scss */
 .left .login {
   padding-left: 5em;
 }
-/* line 172, ../../app/stylesheets/custom.scss */
+/* line 169, ../../app/stylesheets/custom.scss */
 .left .login .open_id {
   margin-left: 4em;
 }
 
-/* line 178, ../../app/stylesheets/custom.scss */
+/* line 175, ../../app/stylesheets/custom.scss */
 .right {
   float: right;
   padding-top: 5em;
+}
+
+/* users#show.html */
+/* line 183, ../../app/stylesheets/custom.scss */
+.profile img.gravatar {
+  border: 1px solid #999;
 }

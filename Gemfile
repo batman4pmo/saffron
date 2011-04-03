@@ -6,6 +6,7 @@ gem 'haml'
 gem 'sass'
 gem "compass", ">= 0.10.6"
 gem 'omniauth'
+gem 'gravatar_image_tag'
 
 group :development do
   gem 'rspec-rails'
@@ -15,6 +16,7 @@ end
 group :test do
   gem 'rspec'
   gem 'webrat'
+  gem 'factory_girl_rails'
 end
 
 # Use unicorn as the web server
