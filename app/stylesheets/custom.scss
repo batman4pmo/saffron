@@ -160,20 +160,11 @@ footer {
     margin-top: 1em;
 }
 
-.left {
-    float: left;
-
-    .login {
-        padding-left: 5em;
-
-        .open_id {
-            margin-left: 4em;
-        }
+.open_id {
+    .input {
+        background: url(/images/login-bg.gif) no-repeat #FFF 5px;
+        padding-left: 25px;
     }
-}
-
-.right {
-    float: right;
 }
 
 /* users#show.html */

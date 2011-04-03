@@ -167,26 +167,14 @@ footer nav li a:hover {
   margin-top: 1em;
 }
 
-/* line 163, ../../app/stylesheets/custom.scss */
-.left {
-  float: left;
-}
-/* line 166, ../../app/stylesheets/custom.scss */
-.left .login {
-  padding-left: 5em;
-}
-/* line 169, ../../app/stylesheets/custom.scss */
-.left .login .open_id {
-  margin-left: 4em;
-}
-
-/* line 175, ../../app/stylesheets/custom.scss */
-.right {
-  float: right;
+/* line 164, ../../app/stylesheets/custom.scss */
+.open_id .input {
+  background: url(/images/login-bg.gif) no-repeat white 5px;
+  padding-left: 25px;
 }
 
 /* users#show.html */
-/* line 182, ../../app/stylesheets/custom.scss */
+/* line 173, ../../app/stylesheets/custom.scss */
 .profile img.gravatar {
   border: 1px solid #999;
 }

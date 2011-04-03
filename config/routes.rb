@@ -11,5 +11,6 @@ Saffron::Application.routes.draw do
   match "/register" => "users#new", :as => :register
 
   match "/auth/:provider/callback" => "sessions#create"
+  match "/auth/failure"            => "sessions#failure"
   match "/logout"                  => "sessions#destroy", :as => :logout
 end
