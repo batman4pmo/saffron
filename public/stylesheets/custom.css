@@ -103,31 +103,87 @@ footer nav li a:hover {
   text-decoration: underline;
 }
 
+/* line 107, ../../app/stylesheets/custom.scss */
+#flash_notice, #flash_error, #flash_alert {
+  padding: 5px 8px;
+  margin: 10px 0;
+  clear: both;
+}
+
+/* line 113, ../../app/stylesheets/custom.scss */
+#flash_notice {
+  background-color: #CFC;
+  border: solid 1px #6C6;
+}
+
+/* line 118, ../../app/stylesheets/custom.scss */
+#flash_error, #flash_alert {
+  background-color: #FCC;
+  border: solid 1px #C66;
+}
+
+/* line 123, ../../app/stylesheets/custom.scss */
+.fieldWithErrors {
+  display: inline;
+}
+
+/* line 127, ../../app/stylesheets/custom.scss */
+.error_messages {
+  width: 400px;
+  border: 2px solid #CF0000;
+  padding: 0px;
+  padding-bottom: 12px;
+  margin-bottom: 20px;
+  background-color: #f0f0f0;
+  font-size: 12px;
+}
+
+/* line 137, ../../app/stylesheets/custom.scss */
+.error_messages h2 {
+  text-align: left;
+  font-weight: bold;
+  padding: 5px 10px;
+  font-size: 12px;
+  margin: 0;
+  background-color: #c00;
+  color: #fff;
+}
+
+/* line 147, ../../app/stylesheets/custom.scss */
+.error_messages p {
+  margin: 8px 10px;
+}
+
+/* line 151, ../../app/stylesheets/custom.scss */
+.error_messages ul {
+  margin: 0;
+}
+
 /* home.html */
-/* line 109, ../../app/stylesheets/custom.scss */
+/* line 157, ../../app/stylesheets/custom.scss */
 .submit {
   margin-left: 6.7em;
   margin-top: 1em;
 }
 
-/* line 114, ../../app/stylesheets/custom.scss */
+/* line 162, ../../app/stylesheets/custom.scss */
 .left {
   float: left;
 }
-/* line 117, ../../app/stylesheets/custom.scss */
+/* line 165, ../../app/stylesheets/custom.scss */
 .left .intro h1 {
   color: #990000;
 }
-/* line 121, ../../app/stylesheets/custom.scss */
+/* line 169, ../../app/stylesheets/custom.scss */
 .left .login {
   padding-left: 5em;
 }
-/* line 124, ../../app/stylesheets/custom.scss */
+/* line 172, ../../app/stylesheets/custom.scss */
 .left .login .open_id {
   margin-left: 4em;
 }
 
-/* line 130, ../../app/stylesheets/custom.scss */
+/* line 178, ../../app/stylesheets/custom.scss */
 .right {
   float: right;
   padding-top: 5em;
