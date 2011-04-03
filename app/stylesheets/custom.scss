@@ -8,14 +8,16 @@ $a-visited-colour: $main-colour;
 
 /* application.html */
 
+.main {
+    background:#fff url(/images/header_background.png) 0 0 repeat-x;
+}
+
 .container {
-    width: 1024px;
+    width: 920px;
 }
 
 header {
     padding-top: 20px;
-
-    img { padding: 1em; }
 }
 
 section {
@@ -24,7 +26,8 @@ section {
     padding: 20px;
 
     h1 {
-        font-size: 5em;
+        padding-top: 1em;
+        font-size: 3em;
         color: $main-colour;
     }
 }
@@ -81,8 +84,8 @@ nav {
 
 footer {
     text-align: center;
-    margin-top: 35em;
-    width: 1024px;
+    margin-top: 5em;
+    width: 920px;
     margin-left: auto;
     margin-right: auto;
 
@@ -105,18 +108,12 @@ footer {
     }
 }
 
-#flash_notice, #flash_error, #flash_alert {
-  padding: 5px 8px;
-  margin: 10px 0;
-  clear: both;
+.notice, .error, .alert {
+  margin-top: 5em;
+  margin-bottom: 0em;
 }
 
-#flash_notice {
-  background-color: #CFC;
-  border: solid 1px #6C6;
-}
-
-#flash_error, #flash_alert {
+.error, .alert {
   background-color: #FCC;
   border: solid 1px #C66;
 }
@@ -170,7 +167,27 @@ footer {
 /* users#show.html */
 
 .profile {
-    img.gravatar {
-        border: 1px solid #999;
+    .gravatar {
+
+        position: absolute;
+
+        img {
+            border: 1px solid #999;
+        }
     }
+
+    .email {
+        position: relative;
+        margin-left: 10em;
+    }
+
+    .projects {
+        position: relative;
+        margin-left: 10em;
+        padding-top: 2em;
+    }
+}
+
+.actions {
+    margin-left: 17em;
 }
