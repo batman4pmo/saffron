@@ -5,6 +5,7 @@ gem 'sqlite3-ruby', :require => 'sqlite3'
 gem 'haml'
 gem 'sass'
 gem "compass", ">= 0.10.6"
+gem 'omniauth'
 
 group :development do
   gem 'rspec-rails'
