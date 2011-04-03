@@ -1,0 +1,15 @@
+%h1 Register
+
+= form_for(@user) do |f|
+  = render "shared/error_messages"
+  .field
+    %div= f.label :name, "Display name"
+    %div= f.text_field :name
+  .field
+    %div= f.label :email
+    - if @openid_email.blank?
+      %div= f.text_field :email
+    - else
+      %div= f.text_field :email, :value => @openid_email
+  .actions
+    %div= f.submit "Register"

@@ -35,4 +35,48 @@ describe UsersController do
     end
   end
 
+  describe "GET 'new'" do
+
+    describe "when accessing directly" do
+      it "should be successful" do
+        get :new
+        response.code.should == "302"
+        response.should redirect_to "/auth/open_id"
+      end
+    end
+
+    describe "when accessing via /auth/open_id" do
+
+      pending "it should populate the user's email address"
+      pending "it should populate the user's display name"
+    end
+
+  end
+
+  describe "POST 'create'" do
+
+    describe "failure" do
+
+      before (:each) do
+        @attr = {:name => "", :email => ""}
+      end
+
+      it "should not create a user" do
+        lambda do
+          post :create, :user => @attr
+        end.should_not change(User, :count)
+      end
+
+      it "should have the right title" do
+        post :create, :user => @attr
+        response.should have_selector("title", :content => "Register")
+      end
+
+      it "should render the 'new' page" do
+        post :create, :user => @attr
+        response.should render_template('new')
+      end
+
+    end
+  end
 end

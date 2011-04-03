@@ -183,11 +183,10 @@ footer nav li a:hover {
 /* line 175, ../../app/stylesheets/custom.scss */
 .right {
   float: right;
-  padding-top: 5em;
 }
 
 /* users#show.html */
-/* line 183, ../../app/stylesheets/custom.scss */
+/* line 182, ../../app/stylesheets/custom.scss */
 .profile img.gravatar {
   border: 1px solid #999;
 }

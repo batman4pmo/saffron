@@ -2,12 +2,20 @@ class SessionsController < ApplicationController
 
   def create
     auth = request.env["omniauth.auth"]
-    user = User.find_by_provider_and_uid(auth["provider"], auth["uid"]) || User.create_with_omniauth(auth)
-    session[:user_id] = user.id
-    if user.name.blank?
-      redirect_to root_url, :notice => "Please provide a Display name"
+
+    if user = User.find_by_provider_and_uid(auth["provider"], auth["uid"]).nil?
+      if auth["user_info"]["nickname"].blank?
+        session[:auth] = auth.except("extra")
+        redirect_to register_url
+      else
+        User.create_with_omniauth(auth)
+        session[:user_id] = user.id
+        redirect_to root_path
+      end
     else
-      redirect_to root_url, :notice => "Logged in!"
+      user = User.find_by_provider_and_uid(auth["provider"], auth["uid"])
+      session[:user_id] = user.id
+      redirect_to root_path
     end
   end
 
