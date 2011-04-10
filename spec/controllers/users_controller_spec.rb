@@ -333,7 +333,7 @@ describe UsersController do
       
       it "should redirect to the user's pages" do
         delete :destroy, :id => @user
-        flash[:success].should =~ /destroyed/i
+        flash[:success].should =~ /deleted/i
         response.should redirect_to(users_path)
       end
       
