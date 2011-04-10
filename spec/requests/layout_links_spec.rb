@@ -22,9 +22,6 @@ describe "LayoutLinks" do
     response.should have_selector("title", :content => "Home")
     click_link "Home"
     response.should have_selector("title", :content => "Home")
-    click_link "Register"
-    response.should have_selector("title", :content => "Register")
-    response.should have_selector("a[href='/']>img")
   end
   
   describe "when not logged in" do

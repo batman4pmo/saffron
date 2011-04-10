@@ -1,0 +1,12 @@
+%h1 Log in
+
+= form_for(:session, :url => sessions_path) do |f|
+  .field
+    %div= f.label :email
+    %div= f.text_field :email
+  .field
+    %div= f.label :password
+    %div= f.password_field :password
+  %br
+  .actions
+    %div= f.submit "Log in"

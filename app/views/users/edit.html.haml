@@ -1,0 +1,27 @@
+%h1 Edit profile
+
+= form_for(@user) do |f|
+  = render "shared/error_messages", :object => f.object
+  .field
+    %div= f.label :name
+    %div= f.text_field :name
+  .field
+    %div= f.label :email
+    %div= f.text_field :email
+  .field
+    %div= f.label :password
+    %div= f.password_field :password
+  .field
+    %div= f.label :password_confirmation
+    %div= f.password_field :password_confirmation
+  %br
+  .actions
+    %div= f.submit "Update"
+
+%div
+  = gravatar_for current_user, :size => 100
+  %br
+  = link_to "change", "http://gravatar.com/emails"
+
+%div
+  =link_to "view profile", @user
