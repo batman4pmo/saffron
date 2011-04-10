@@ -84,7 +84,7 @@ nav ul li a:hover {
 /* line 85, ../../app/stylesheets/custom.scss */
 footer {
   text-align: center;
-  margin-top: 5em;
+  margin-top: 15em;
   width: 920px;
   margin-left: auto;
   margin-right: auto;
@@ -162,34 +162,33 @@ footer nav li a:hover {
   margin-top: 1em;
 }
 
-/* line 161, ../../app/stylesheets/custom.scss */
-.open_id .input {
-  background: url(/images/login-bg.gif) no-repeat white 5px;
-  padding-left: 25px;
+/* line 160, ../../app/stylesheets/custom.scss */
+.register {
+  float: right;
 }
 
 /* users#show.html */
-/* line 170, ../../app/stylesheets/custom.scss */
+/* line 167, ../../app/stylesheets/custom.scss */
 .profile .gravatar {
   position: absolute;
 }
-/* line 174, ../../app/stylesheets/custom.scss */
+/* line 171, ../../app/stylesheets/custom.scss */
 .profile .gravatar img {
   border: 1px solid #999;
 }
-/* line 179, ../../app/stylesheets/custom.scss */
+/* line 176, ../../app/stylesheets/custom.scss */
 .profile .email {
   position: relative;
   margin-left: 10em;
 }
-/* line 184, ../../app/stylesheets/custom.scss */
+/* line 181, ../../app/stylesheets/custom.scss */
 .profile .projects {
   position: relative;
   margin-left: 10em;
   padding-top: 2em;
 }
 
-/* line 191, ../../app/stylesheets/custom.scss */
+/* line 188, ../../app/stylesheets/custom.scss */
 .actions {
   margin-left: 17em;
 }

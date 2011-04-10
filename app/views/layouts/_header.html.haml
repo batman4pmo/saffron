@@ -2,13 +2,13 @@
   %h1= link_to "Saffron", root_path
   %nav.round
     %ul
-      %li= link_to "Home", root_path
+      %li= link_to_unless_current "Home", root_path
       %li= link_to "Wiki", wiki_path, :target => "_blank"
       %li= link_to "Contact", contact_path, :target => "_blank"
 
       - if current_user
-        %li= link_to "Users", users_path
-        %li= link_to "Profile", edit_user_path(current_user)
+        %li= link_to_unless_current "Users", users_path
+        %li= link_to_unless_current "Profile", edit_user_path(current_user)
         %li= link_to "Log out", logout_path
       - else
-        %li= link_to "Log in", login_path
+        %li= link_to_unless_current "Log in", login_path

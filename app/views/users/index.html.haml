@@ -1,0 +1,11 @@
+%h1 All users
+
+= will_paginate
+%br
+%ul.users
+  - @users.each do |user|
+    %li
+      = gravatar_for user, :size => 30
+      = link_to user.name, user
+
+= will_paginate

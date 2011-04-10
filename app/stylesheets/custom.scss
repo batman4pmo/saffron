@@ -84,7 +84,7 @@ nav {
 
 footer {
     text-align: center;
-    margin-top: 5em;
+    margin-top: 15em;
     width: 920px;
     margin-left: auto;
     margin-right: auto;
@@ -157,11 +157,8 @@ footer {
     margin-top: 1em;
 }
 
-.open_id {
-    .input {
-        background: url(/images/login-bg.gif) no-repeat #FFF 5px;
-        padding-left: 25px;
-    }
+.register {
+    float: right;
 }
 
 /* users#show.html */
