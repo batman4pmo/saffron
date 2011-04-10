@@ -1,22 +1,20 @@
 class SessionsController < ApplicationController
 
   def create
-    auth = request.env["omniauth.auth"]
+    @auth = request.env["omniauth.auth"]
 
-    if user = User.find_by_provider_and_uid(auth["provider"], auth["uid"]).nil?
-      if auth["user_info"]["nickname"].blank?
-        session[:auth] = auth.except("extra")
+    if registered_user?
+      log_in_user
+    else
+      if missing_details?
+        session[:auth] = @auth.except("extra")
         redirect_to register_url
       else
-        User.create_with_omniauth(auth)
-        session[:user_id] = user.id
-        callback
+        User.create_with_omniauth(@auth)
+        log_in_user
       end
-    else
-      user = User.find_by_provider_and_uid(auth["provider"], auth["uid"])
-      session[:user_id] = user.id
-      callback
     end
+
   end
 
   def destroy
@@ -29,6 +27,19 @@ class SessionsController < ApplicationController
   end
 
   private
+  def registered_user?
+    @user = User.find_by_provider_and_uid(@auth["provider"], @auth["uid"])
+  end
+
+  def log_in_user
+    session[:user_id] = @user.id
+    callback
+  end
+
+  def missing_details?
+    @auth["user_info"]["nickname"].blank? or @auth["user_info"]["email"].blank?
+  end
+
   def callback
     redirect_to request.env['omniauth.origin'] || '/default'
   end
