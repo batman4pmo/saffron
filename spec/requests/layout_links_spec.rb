@@ -20,8 +20,6 @@ describe "LayoutLinks" do
   it "should have the right links on the layout" do
     visit root_path
     response.should have_selector("title", :content => "Home")
-    click_link "Home"
-    response.should have_selector("title", :content => "Home")
   end
   
   describe "when not logged in" do

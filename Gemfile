@@ -7,11 +7,11 @@ gem 'sass'
 gem "compass", ">= 0.10.6"
 gem 'gravatar_image_tag'
 gem 'will_paginate'
-gem 'faker'
 
 group :development do
   gem 'rspec-rails'
   gem 'annotate-models'
+  gem 'faker'
 end
 
 group :test do

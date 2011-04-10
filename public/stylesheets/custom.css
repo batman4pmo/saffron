@@ -192,3 +192,9 @@ footer nav li a:hover {
 .actions {
   margin-left: 17em;
 }
+
+/* flash */
+/* line 194, ../../app/stylesheets/custom.scss */
+.success {
+  margin-top: 5em;
+}

@@ -73,6 +73,7 @@ describe UsersController do
     
     before(:each) do
       @user = Factory(:user)
+      test_log_in(@user)
     end
     
     it "should be successful" do
