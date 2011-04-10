@@ -1,6 +1,10 @@
 Factory.define :user do |user|
-  user.provider "factory provider"
-  user.uid      "factory uid"
-  user.name     "Factory User"
-  user.email    "factory@example.com"
+  user.name                  "Test User"
+  user.email                 "test.user@example.com"
+  user.password              "foobar"
+  user.password_confirmation "foobar"
+end
+
+Factory.sequence :email do |n|
+  "user#{n}@example.com"
 end

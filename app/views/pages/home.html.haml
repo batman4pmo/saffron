@@ -1,13 +1,5 @@
 .intro
   %h1 Welcome
   %p Saffron allows you to track the QA elements of your software projects.
-- unless current_user
   .login
     %h2 Log in
-    OpenID
-    .open_id
-      %form{ :action => "auth/open_id", :method => "post" }
-        %input{ :type => "text", :name => "openid_url", :class => "input" }
-        %input{ :type => "submit", :value => "Log in" }
-    %a{ :href => "http://openid.net/get-an-openid/", :target => "_blank" }
-      Don't have an OpenID? Get one here!

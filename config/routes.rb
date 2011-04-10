@@ -1,6 +1,7 @@
 Saffron::Application.routes.draw do
 
   resources :users
+  resources :sessions,      :only => [ :new, :create, :destroy ]
 
   root :to => "pages#home"
 
@@ -8,9 +9,7 @@ Saffron::Application.routes.draw do
   match "/issues"  => "pages#issues"
   match "/contact" => "pages#contact"
 
-  match "/register" => "users#new", :as => :register
-
-  match "/auth/:provider/callback" => "sessions#create"
-  match "/auth/failure"            => "sessions#failure"
-  match "/logout"                  => "sessions#destroy", :as => :logout
+  match "/register" => "users#new"
+  match "/login"    => "sessions#new"
+  match "/logout"   => "sessions#destroy", :as => :logout
 end

@@ -9,14 +9,26 @@ describe PagesController do
 
   describe "GET 'home'" do
 
-    it "should be successful" do
-      get 'home'
-      response.should be_success
+    describe "when not signed in" do
+
+      it "should be successful" do
+        get 'home'
+        response.should be_success
+      end
+
+      it "should have the right title" do
+        get 'home'
+        response.should have_selector("title", :content => "Saffron | Home")
+      end
+
+      it "should not have a blank body" do
+        get 'home'
+        response.body.should_not =~ /<body>\s*<\/body>/
+      end
     end
 
-    it "should have the right title" do
-      get 'home'
-      response.should have_selector("title", :content => "Saffron | Home")
+    describe "when signed in" do
+
     end
   end
 

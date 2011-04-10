@@ -7,10 +7,13 @@
     %div= f.text_field :name
   .field
     %div= f.label :email
-    - if @openid_email.blank?
-      %div= f.text_field :email
-    - else
-      %div= f.text_field :email, :value => @openid_email
+    %div= f.text_field :email
+  .filed
+    %div= f.label :password
+    %div= f.password_field :password
+  .field
+    %div= f.label :password_confirmation, "Confirm password"
+    %div= f.password_field :password_confirmation
   %br
   .actions
     %div= f.submit "Register"
