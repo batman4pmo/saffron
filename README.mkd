@@ -1,5 +1,5 @@
-# Project Saffron
+# Saffron
 
-The purpose of Project Saffron is to create a web-app that will allow a user to track the things in a software project that are relevant to QA. 
+Saffron is a simple app for managing QA processes.
 
 Author: [*Brian Maher*](http://twitter.com/bmaher_qa)
