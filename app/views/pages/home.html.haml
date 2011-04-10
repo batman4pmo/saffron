@@ -1,5 +1,6 @@
 .intro
   %h1 Welcome
-  %p Saffron allows you to track the QA elements of your software projects.
-  .login
-    %h2 Log in
+  %p Saffron is a simple app for managing QA processes
+  -if not logged_in?
+    .register
+    =render "shared/register"

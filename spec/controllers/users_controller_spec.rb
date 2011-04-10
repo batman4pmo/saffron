@@ -3,71 +3,71 @@ require 'spec_helper'
 describe UsersController do
   render_views
   
-  describe "GET 'index'" do
-    
-    describe "for non-signed-in users" do
-      
-      it "should deny access" do
-        get :index
-        response.should redirect_to(login_path)
-      end
-      
-    end
-    
-    describe "for signed-in users" do
-      
-      before(:each) do
-        @user = test_sign_in(Factory(:user))
-        Factory(:user, :email => "user.one@example.com")
-        Factory(:user, :email => "user.two@example.com")
-        30.times { Factory(:user, :email => Factory.next(:email)) }
-      end
-      
-      it "should be successful" do
-        get :index
-        response.should be_success
-      end
-      
-      it "should have the right title" do
-        get :index
-        response.should have_selector("title", :content => "All users")
-      end
-      
-      it "should have an element for each user" do
-        get :index
-        User.all.paginate(:page => 1).each do |user|
-          response.should have_selector("li", :content => user.name)
-        end
-      end
-      
-      it "should paginate users" do
-        get :index
-        response.should have_selector("div.pagination")
-        response.should have_selector("span.disabled", :content => "Previous")
-        response.should have_selector("a", :href => "/users?page=2",
-                                           :content => "2")
-        response.should have_selector("a", :href => "/users?page=2",
-                                           :content => "Next")
-      end
-      
-      it "should have delete links for admins" do
-        @user.toggle!(:admin)
-        other_user = User.all.second
-        get :index
-        response.should have_selector("a", :href => user_path(other_user),
-                                           :content => "delete")
-      end
-      
-      it "should not have delete links for non-admins" do
-        other_user = User.all.second
-        get :index
-        response.should_not have_selector("a", :href => user_path(other_user),
-                                               :content => "delete")
-      end
-      
-    end
-    
-  end
+#  describe "GET 'index'" do
+#
+#    describe "for non-logged-in users" do
+#
+#      it "should deny access" do
+#        get :index
+#        response.should redirect_to(login_path)
+#      end
+#
+#    end
+#
+#    describe "for logged-in users" do
+#
+#      before(:each) do
+#        @user = test_log_in(Factory(:user))
+#        Factory(:user, :email => "user.one@example.com")
+#        Factory(:user, :email => "user.two@example.com")
+#        30.times { Factory(:user, :email => Factory.next(:email)) }
+#      end
+#
+#      it "should be successful" do
+#        get :index
+#        response.should be_success
+#      end
+#
+#      it "should have the right title" do
+#        get :index
+#        response.should have_selector("title", :content => "All users")
+#      end
+#
+#      it "should have an element for each user" do
+#        get :index
+#        User.all.paginate(:page => 1).each do |user|
+#          response.should have_selector("li", :content => user.name)
+#        end
+#      end
+#
+#      it "should paginate users" do
+#        get :index
+#        response.should have_selector("div.pagination")
+#        response.should have_selector("span.disabled", :content => "Previous")
+#        response.should have_selector("a", :href => "/users?page=2",
+#                                           :content => "2")
+#        response.should have_selector("a", :href => "/users?page=2",
+#                                           :content => "Next")
+#      end
+#
+#      it "should have delete links for admins" do
+#        @user.toggle!(:admin)
+#        other_user = User.all.second
+#        get :index
+#        response.should have_selector("a", :href => user_path(other_user),
+#                                           :content => "delete")
+#      end
+#
+#      it "should not have delete links for non-admins" do
+#        other_user = User.all.second
+#        get :index
+#        response.should_not have_selector("a", :href => user_path(other_user),
+#                                               :content => "delete")
+#      end
+#
+#    end
+#
+#  end
   
   describe "GET 'show'" do
     
@@ -97,18 +97,12 @@ describe UsersController do
     
     it "should have a profile image" do
       get :show, :id => @user.id
-      response.should have_selector("h1>img", :class => "gravatar")
+      response.should have_selector("div>img", :class => "gravatar")
     end
     
-    it "should have the right URL" do
-      get :show, :id => @user.id
-      response.should have_selector("div>a", :content => user_path(@user),
-                                             :href    => user_path(@user))
-    end
-    
-    describe "when signed in as another user" do
+    describe "when logged in as another user" do
       it "should be successful" do
-        test_sign_in(Factory(:user, :email => Factory.next(:email)))
+        test_log_in(Factory(:user, :email => Factory.next(:email)))
         get :show, :id => @user
         response.should be_success
       end
@@ -125,7 +119,7 @@ describe UsersController do
     
     it "should have the right title" do
       get :new
-      response.should have_selector("title", :content => "Sign up")
+      response.should have_selector("title", :content => "Register")
     end
   end
 
@@ -139,7 +133,7 @@ describe UsersController do
       
       it "should have the right title" do
         post :create, :user => @attr
-        response.should have_selector("title", :content => "Sign up")
+        response.should have_selector("title", :content => "Register")
       end
       
       it "should render the 'new' page" do
@@ -174,91 +168,91 @@ describe UsersController do
       
       it "should have a welcome message" do
         post :create, :user => @attr
-        flash[:success].should =~ /welcome to the sample app/i
+        flash[:success].should =~ /welcome to saffron/i
       end
       
-      it "should sign the user in" do
+      it "should log the user in" do
         post :create, :user => @attr
-        controller.should be_signed_in
+        controller.should be_logged_in
       end
       
     end
   end
   
-  describe "GET 'edit'" do
-    
-    before(:each) do
-      @user = Factory(:user)
-      test_sign_in(@user)
-    end
-    
-    it "should be successful" do
-      get :edit, :id => @user
-      response.should be_success
-    end
-    
-    it "should have the right title" do
-      get :edit, :id => @user
-      response.should have_selector("title", :content => "Edit user")
-    end
-    
-    it "should have a link to change the Gravatar" do
-      get :edit, :id => @user
-      response.should have_selector("a", :href => "http://gravatar.com/emails",
-                                         :content => "change Gravatar")
-    end
-    
-  end
+#  describe "GET 'edit'" do
+#
+#    before(:each) do
+#      @user = Factory(:user)
+#      test_log_in(@user)
+#    end
+#
+#    it "should be successful" do
+#      get :edit, :id => @user
+#      response.should be_success
+#    end
+#
+#    it "should have the right title" do
+#      get :edit, :id => @user
+#      response.should have_selector("title", :content => "Edit profile")
+#    end
+#
+#    it "should have a link to change the Gravatar" do
+#      get :edit, :id => @user
+#      response.should have_selector("a", :href => "http://gravatar.com/emails",
+#                                         :content => "change Gravatar")
+#    end
+#
+#  end
   
-  describe "PUT 'update'" do
-    
-    before(:each) do
-      @user = Factory(:user)
-      test_sign_in(@user)
-    end
-    
-    describe "failure" do
-      
-      before(:each) do
-        @attr = { :name => "", :email => "", :password => "", :password_confirmation => "" }
-      end
-      
-      it "should render the 'edit' page" do
-        put :update, :id => @user, :user => @attr
-        response.should render_template('edit')
-      end
-      
-      it "should have the right title" do
-        put :update, :id => @user, :user => @attr
-        response.should have_selector("title", :content => "Edit user")
-      end
-      
-    end
-    
-    describe "success" do
-      
-      before(:each) do
-        @attr = { :name => "New Name", :email => "new.user@example.com",
-                  :password => "newpassword", :password_confirmation => "newpassword" }
-      end
-      
-      it "should change the user's attributes" do
-        put :update, :id => @user, :user => @attr
-        user = assigns(:user)
-        @user.reload
-        @user.name.should == user.name
-        @user.email.should == user.email
-        @user.encrypted_password.should == user.encrypted_password
-      end
-      
-      it "should have a flash message" do
-        post :update, :id => @user, :user => @attr
-        flash[:success].should =~ /updated/i
-      end
-      
-    end
-    
-  end
+#  describe "PUT 'update'" do
+#
+#    before(:each) do
+#      @user = Factory(:user)
+#      test_log_in(@user)
+#    end
+#
+#    describe "failure" do
+#
+#      before(:each) do
+#        @attr = { :name => "", :email => "", :password => "", :password_confirmation => "" }
+#      end
+#
+#      it "should render the 'edit' page" do
+#        put :update, :id => @user, :user => @attr
+#        response.should render_template('edit')
+#      end
+#
+#      it "should have the right title" do
+#        put :update, :id => @user, :user => @attr
+#        response.should have_selector("title", :content => "Edit user")
+#      end
+#
+#    end
+#
+#    describe "success" do
+#
+#      before(:each) do
+#        @attr = { :name => "New Name", :email => "new.user@example.com",
+#                  :password => "newpassword", :password_confirmation => "newpassword" }
+#      end
+#
+#      it "should change the user's attributes" do
+#        put :update, :id => @user, :user => @attr
+#        user = assigns(:user)
+#        @user.reload
+#        @user.name.should == user.name
+#        @user.email.should == user.email
+#        @user.encrypted_password.should == user.encrypted_password
+#      end
+#
+#      it "should have a flash message" do
+#        post :update, :id => @user, :user => @attr
+#        flash[:success].should =~ /updated/i
+#      end
+#
+#    end
+#
+#  end
   
   describe "authentication of edit/update actions" do
     
@@ -266,12 +260,12 @@ describe UsersController do
       @user = Factory(:user)
     end
     
-    describe "for non-signed in users" do
+    describe "for non-logged in users" do
       
       it "should deny access to 'edit'" do
         get :edit, :id => @user
         response.should redirect_to(login_path)
-        flash[:notice].should =~ /sign in/i
+        flash[:notice].should =~ /log in/i
       end
 
       it "should deny access to 'update'" do
@@ -281,11 +275,11 @@ describe UsersController do
       
     end
     
-    describe "for signed-in users" do
+    describe "for logged-in users" do
       
       before(:each) do
         wrong_user = Factory(:user, :email => "user@example.net")
-        test_sign_in(wrong_user)
+        test_log_in(wrong_user)
       end
       
       it "should require matching users for 'edit'" do
@@ -308,7 +302,7 @@ describe UsersController do
       @user = Factory(:user)
     end
     
-    describe "as a non-signed-in user" do
+    describe "as a non-logged-in user" do
       it "should deny access" do
         delete :destroy, :id => @user
         response.should redirect_to(login_path)
@@ -317,7 +311,7 @@ describe UsersController do
     
     describe "as a non-admin user" do
       it "should protect the action" do
-        test_sign_in(@user)
+        test_log_in(@user)
         delete :destroy, :id => @user
         response.should redirect_to(root_path)
       end
@@ -327,7 +321,7 @@ describe UsersController do
       
       before(:each) do
         @admin = Factory(:user, :email => "admin@example.com", :admin => true)
-        test_sign_in(@admin)
+        test_log_in(@admin)
       end
       
       it "should destroy the user" do

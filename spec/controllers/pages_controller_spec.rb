@@ -9,7 +9,7 @@ describe PagesController do
 
   describe "GET 'home'" do
 
-    describe "when not signed in" do
+    describe "when not logged in" do
 
       it "should be successful" do
         get 'home'
@@ -27,7 +27,7 @@ describe PagesController do
       end
     end
 
-    describe "when signed in" do
+    describe "when logged in" do
 
     end
   end

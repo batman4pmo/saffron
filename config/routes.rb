@@ -11,5 +11,5 @@ Saffron::Application.routes.draw do
 
   match "/register" => "users#new"
   match "/login"    => "sessions#new"
-  match "/logout"   => "sessions#destroy", :as => :logout
+  match "/logout"   => "sessions#destroy"
 end

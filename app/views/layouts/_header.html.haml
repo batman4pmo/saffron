@@ -9,3 +9,5 @@
       - if current_user
         %li= link_to "Profile", User.find(current_user)
         %li= link_to "Log out", logout_path
+      - else
+        %li= link_to "Log in", login_path

@@ -15,29 +15,29 @@ class UsersController < ApplicationController
 
   def new
     @user = User.new
-    @title = "Sign up"
+    @title = "Register"
   end
 
   def create
     @user = User.new(params[:user])
     if @user.save
-      sign_in @user
-      redirect_to @user, :flash => {:success => "Welcome to the Sample App!"}
+      log_in @user
+      redirect_to @user, :flash => {:success => "Welcome to Saffron!"}
     else
-      @title = "Sign up"
+      @title = "Register"
       render 'new'
     end
   end
 
   def edit
-    @title = "Edit user"
+    @title = "Edit profile"
   end
 
   def update
     if @user.update_attributes(params[:user])
       redirect_to @user, :flash => {:success => "Profile updated."}
     else
-      @title = "Edit user"
+      @title = "Edit profile"
       render 'edit'
     end
   end
