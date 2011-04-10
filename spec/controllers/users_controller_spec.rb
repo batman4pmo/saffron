@@ -3,71 +3,71 @@ require 'spec_helper'
 describe UsersController do
   render_views
   
-#  describe "GET 'index'" do
-#
-#    describe "for non-logged-in users" do
-#
-#      it "should deny access" do
-#        get :index
-#        response.should redirect_to(login_path)
-#      end
-#
-#    end
-#
-#    describe "for logged-in users" do
-#
-#      before(:each) do
-#        @user = test_log_in(Factory(:user))
-#        Factory(:user, :email => "user.one@example.com")
-#        Factory(:user, :email => "user.two@example.com")
-#        30.times { Factory(:user, :email => Factory.next(:email)) }
-#      end
-#
-#      it "should be successful" do
-#        get :index
-#        response.should be_success
-#      end
-#
-#      it "should have the right title" do
-#        get :index
-#        response.should have_selector("title", :content => "All users")
-#      end
-#
-#      it "should have an element for each user" do
-#        get :index
-#        User.all.paginate(:page => 1).each do |user|
-#          response.should have_selector("li", :content => user.name)
-#        end
-#      end
-#
-#      it "should paginate users" do
-#        get :index
-#        response.should have_selector("div.pagination")
-#        response.should have_selector("span.disabled", :content => "Previous")
-#        response.should have_selector("a", :href => "/users?page=2",
-#                                           :content => "2")
-#        response.should have_selector("a", :href => "/users?page=2",
-#                                           :content => "Next")
-#      end
-#
-#      it "should have delete links for admins" do
-#        @user.toggle!(:admin)
-#        other_user = User.all.second
-#        get :index
-#        response.should have_selector("a", :href => user_path(other_user),
-#                                           :content => "delete")
-#      end
-#
-#      it "should not have delete links for non-admins" do
-#        other_user = User.all.second
-#        get :index
-#        response.should_not have_selector("a", :href => user_path(other_user),
-#                                               :content => "delete")
-#      end
-#
-#    end
-#
-#  end
+  describe "GET 'index'" do
+
+    describe "for non-logged-in users" do
+
+      it "should deny access" do
+        get :index
+        response.should redirect_to(login_path)
+      end
+
+    end
+
+    describe "for logged-in users" do
+
+      before(:each) do
+        @user = test_log_in(Factory(:user))
+        Factory(:user, :email => "user.one@example.com")
+        Factory(:user, :email => "user.two@example.com")
+        30.times { Factory(:user, :email => Factory.next(:email)) }
+      end
+
+      it "should be successful" do
+        get :index
+        response.should be_success
+      end
+
+      it "should have the right title" do
+        get :index
+        response.should have_selector("title", :content => "All users")
+      end
+
+      it "should have an element for each user" do
+        get :index
+        User.all.paginate(:page => 1).each do |user|
+          response.should have_selector("li", :content => user.name)
+        end
+      end
+
+      it "should paginate users" do
+        get :index
+        response.should have_selector("div.pagination")
+        response.should have_selector("span.disabled", :content => "Previous")
+        response.should have_selector("a", :href => "/users?page=2",
+                                           :content => "2")
+        response.should have_selector("a", :href => "/users?page=2",
+                                           :content => "Next")
+      end
+
+      it "should have delete links for admins" do
+        @user.toggle!(:admin)
+        other_user = User.all.second
+        get :index
+        response.should have_selector("a", :href => user_path(other_user),
+                                           :content => "delete")
+      end
+
+      it "should not have delete links for non-admins" do
+        other_user = User.all.second
+        get :index
+        response.should_not have_selector("a", :href => user_path(other_user),
+                                               :content => "delete")
+      end
+
+    end
+
+  end
   
   describe "GET 'show'" do
     
@@ -199,7 +199,7 @@ describe UsersController do
     it "should have a link to change the Gravatar" do
       get :edit, :id => @user
       response.should have_selector("a", :href => "http://gravatar.com/emails",
-                                         :content => "change Gravatar")
+                                         :content => "change")
     end
 
   end
@@ -224,7 +224,7 @@ describe UsersController do
 
       it "should have the right title" do
         put :update, :id => @user, :user => @attr
-        response.should have_selector("title", :content => "Edit user")
+        response.should have_selector("title", :content => "Edit profile")
       end
 
     end
