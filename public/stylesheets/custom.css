@@ -198,3 +198,14 @@ footer nav li a:hover {
 .success {
   margin-top: 5em;
 }
+
+/* users#index.html */
+/* line 201, ../../app/stylesheets/custom.scss */
+ul users {
+  margin-top: 1em;
+}
+
+/* line 207, ../../app/stylesheets/custom.scss */
+.users li {
+  list-style: none;
+}
