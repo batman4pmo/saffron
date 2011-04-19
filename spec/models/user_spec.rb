@@ -14,13 +14,11 @@ describe User do
   end
 
   it "should require a name" do
-    no_name_user = User.new(@attr.merge(:name => ""))
-    no_name_user.should_not be_valid
+    User.new(@attr.merge(:name => "")).should_not be_valid
   end
 
   it "should require an email address" do
-    no_email_user = User.new(@attr.merge(:email => ""))
-    no_email_user.should_not be_valid
+    User.new(@attr.merge(:email => "")).should_not be_valid
   end
 
   it "should reject names that are too long" do
@@ -175,5 +173,23 @@ describe User do
       @user.should be_admin
     end
 
+  end
+
+  describe "project associations" do
+
+    before(:each) do
+      @user = User.create(@attr)
+      @project1 = Factory(:project, :user => @user, :name => "Project A")
+      @project2 = Factory(:project, :user => @user, :name => "Project C")
+      @project3 = Factory(:project, :user => @user, :name => "Project B")
+    end
+
+    it "should have a projects attribute" do
+      @user.should respond_to(:projects)
+    end
+
+    it "should have the right projects in the right order" do
+      @user.projects.should == [@project1, @project3, @project2]
+    end
   end
 end
