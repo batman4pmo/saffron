@@ -42,6 +42,12 @@ class ProjectsController < ApplicationController
     end
   end
 
+  def destroy
+    project = Project.find(params[:id])
+    project.destroy
+    redirect_to projects_path, :flash => {:success => "Project deleted."}
+  end
+
   private
   def project_owner
     project = Project.find(params[:id])

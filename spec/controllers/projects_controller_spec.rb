@@ -18,7 +18,7 @@ describe ProjectsController do
       before(:each) do
         @user = test_log_in(Factory(:user))
         32.times do |n|
-          @user.projects.create(:name => "Test Project #{n+1}", :client => "Test Client")
+          @user.projects.create(Factory(:project, :user => @user, :name => "Test Project #{n+1}"))
         end
       end
 
@@ -288,6 +288,68 @@ describe ProjectsController do
         @wrong_user.toggle!(:admin)
         put :update, :id => @project, :project => {:name => "New name", :client => "New client"}
         flash[:success].should =~ /updated/i
+      end
+    end
+  end
+
+  describe "DELETE 'destroy'" do
+
+    before(:each) do
+      @user = Factory(:user)
+      @project = @user.projects.create(:name => "Test Project", :client => "Test Client")
+    end
+
+    describe "as a non-logged-in user" do
+      it "should deny access" do
+        delete :destroy, :id => @project
+        response.should redirect_to(login_path)
+      end
+    end
+
+    describe "as a non-admin/non-project owner" do
+      it "should protect the action" do
+        test_log_in(Factory(:user, :email => Factory.next(:email)))
+        delete :destroy, :id => @project
+        response.should redirect_to(root_path)
+      end
+    end
+
+    describe "as an admin user" do
+
+      before(:each) do
+        @admin = Factory(:user, :email => "admin@example.com", :admin => true)
+        test_log_in(@admin)
+      end
+
+      it "should destroy the project" do
+        lambda do
+          delete :destroy, :id => @project.id
+        end.should change(Project, :count).by(-1)
+      end
+
+      it "should redirect to the projects page" do
+        delete :destroy, :id => @project
+        flash[:success].should =~ /deleted/i
+        response.should redirect_to(projects_path)
+      end
+    end
+
+    describe "as a project owner" do
+
+      before(:each) do
+        test_log_in(@user)
+      end
+
+      it "should destroy the project" do
+        lambda do
+          delete :destroy, :id => @project.id
+        end.should change(Project, :count).by(-1)
+      end
+
+      it "should redirect to the projects page" do
+        delete :destroy, :id => @project
+        flash[:success].should =~ /deleted/i
+        response.should redirect_to(projects_path)
       end
     end
   end

@@ -254,15 +254,15 @@ describe UsersController do
     end
 
   end
-  
+
   describe "authentication of edit/update actions" do
-    
+
     before(:each) do
       @user = Factory(:user)
     end
-    
+
     describe "for non-logged in users" do
-      
+
       it "should deny access to 'edit'" do
         get :edit, :id => @user
         response.should redirect_to(login_path)
@@ -273,28 +273,28 @@ describe UsersController do
         put :update, :id => @user, :user => {}
         response.should redirect_to(login_path)
       end
-      
+
     end
-    
+
     describe "for logged-in users" do
-      
+
       before(:each) do
         wrong_user = Factory(:user, :email => "user@example.net")
         test_log_in(wrong_user)
       end
-      
+
       it "should require matching users for 'edit'" do
         get :edit, :id => @user
         response.should redirect_to(root_path)
       end
-      
+
       it "should require matching users for 'update'" do
         put :update, :id => @user, :user => {}
         response.should redirect_to(root_path)
       end
-      
+
     end
-    
+
   end
   
   describe "DELETE 'destroy" do
@@ -331,7 +331,7 @@ describe UsersController do
         end.should change(User, :count).by(-1)
       end
       
-      it "should redirect to the user's pages" do
+      it "should redirect to the users page" do
         delete :destroy, :id => @user
         flash[:success].should =~ /deleted/i
         response.should redirect_to(users_path)
