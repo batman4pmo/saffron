@@ -13,7 +13,7 @@ class ProjectsController < ApplicationController
 
   def new
     @project = Project.new
-    @title = "Create project"
+    @title = "New project"
   end
 
   def create
@@ -21,7 +21,7 @@ class ProjectsController < ApplicationController
     if @project.save
       redirect_to @project, :flash => {:success => "Project created!"}
     else
-      @title = "Create project"
+      @title = "New project"
       render 'new'
     end
   end

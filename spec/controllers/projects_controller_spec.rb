@@ -131,7 +131,7 @@ describe ProjectsController do
 
     it "should have the right title" do
       get :new
-      response.should have_selector("title", :content => "Create project")
+      response.should have_selector("title", :content => "New project")
     end
 
   end
@@ -150,7 +150,7 @@ describe ProjectsController do
 
       it "should have the right title" do
         post :create, :project => @attr
-        response.should have_selector("title", :content => "Create project")
+        response.should have_selector("title", :content => "New project")
       end
 
       it "should render the 'new' page" do

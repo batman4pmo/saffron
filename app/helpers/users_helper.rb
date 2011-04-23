@@ -4,4 +4,8 @@ module UsersHelper
                                             :class => "gravatar",
                                             :gravatar => options)
   end
+
+  def projects_for(user)
+    Project.find_all_by_user_id(user)
+  end
 end

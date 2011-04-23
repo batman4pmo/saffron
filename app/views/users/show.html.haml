@@ -8,5 +8,11 @@
     =@user.email
   .projects
     %h3 Projects
-    %ul
-      %li Project 1
+    %ul.users
+      - projects_for(@user).each do |project|
+        %li
+        = link_to project.name, project
+        - if current_user.admin? || current_user.id == project.user_id
+          = link_to " | delete", project, :method => :delete,
+                                          :confirm => "Are you sure?",
+                                          :title => "Delete #{project.name}"

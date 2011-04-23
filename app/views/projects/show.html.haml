@@ -1,1 +1,20 @@
-%h1= @title
+.profile
+  %h1= @title
+  .description
+    Description:
+    = @project.description
+  .client
+    Client:
+    = @project.client
+  .wiki
+    Wiki:
+    = @project.wiki
+  .issue_tracker
+    Issue Tracker:
+    = @project.issue_tracker
+  .image
+    Image:
+    = @project.image
+  .admin
+    Admin:
+    = link_to @project.user.name, @project.user
