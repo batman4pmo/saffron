@@ -1,7 +1,7 @@
 %h1 Edit profile
 
 = form_for(@user) do |f|
-  = render "shared/error_messages", :object => f.object
+  = render "shared/error_messages", :f => f, :@object => f.object
   .field
     %div= f.label :name
     %div= f.text_field :name

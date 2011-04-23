@@ -117,4 +117,56 @@ describe ProjectsController do
       end
     end
   end
+
+  describe "GET 'new'" do
+
+    before(:each) do
+      test_log_in(Factory(:user))
+    end
+
+    it "should be successful" do
+      get :new
+      response.should be_success
+    end
+
+    it "should have the right title" do
+      get :new
+      response.should have_selector("title", :content => "Create project")
+    end
+
+  end
+
+  describe "POST 'create'" do
+
+    before(:each) do
+      test_log_in(Factory(:user))
+    end
+
+    describe "failure" do
+
+      before(:each) do
+        @attr = { :name => "", :client => "", :description => "", :image => "", :wiki => "", :issue_tracker => "" }
+      end
+
+      it "should have the right title" do
+        post :create, :project => @attr
+        response.should have_selector("title", :content => "Create project")
+      end
+
+      it "should render the 'new' page" do
+        post :create, :project => @attr
+        response.should render_template("new")
+      end
+
+      it "should not create a project" do
+        lambda do
+          post :create, :project => @attr
+        end.should_not change(Project, :count)
+      end
+    end
+
+    describe "success" do
+
+    end
+  end
 end

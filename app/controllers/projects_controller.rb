@@ -10,4 +10,19 @@ class ProjectsController < ApplicationController
     @project = Project.find(params[:id])
     @title = @project.name
   end
+
+  def new
+    @project = Project.new
+    @title = "Create project"
+  end
+
+  def create
+    @project = current_user.projects.create(params[:project])
+    if @project.save
+      redirect_to @project, :flash => {:success => "Project created!"}
+    else
+      @title = "Create project"
+      render 'new'
+    end
+  end
 end

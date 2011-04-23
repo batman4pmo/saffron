@@ -6,3 +6,5 @@
       =render "shared/register"
     .login
       =render "shared/login"
+  -else
+    %div= link_to "New Project", "projects/new"
