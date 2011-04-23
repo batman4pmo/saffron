@@ -9,10 +9,6 @@ Factory.sequence :email do |n|
   "user#{n}@example.com"
 end
 
-Factory.sequence :project_name do |n|
-  "project #{n}"
-end
-
 Factory.define :project do |project|
   project.name        "Test Project"
   project.client      "Test Project Client"
