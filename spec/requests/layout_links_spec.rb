@@ -58,7 +58,11 @@ describe "LayoutLinks" do
                                          :content => "Users")
     end
 
-    it "should have a projects link"
+    it "should have a projects link" do
+      visit root_path
+      response.should have_selector("a", :href => projects_path,
+                                         :content => "Projects")
+    end
     
   end
   

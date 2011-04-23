@@ -5,6 +5,7 @@
       %li= link_to_unless_current "Home", root_path
 
       - if current_user
+        %li= link_to_unless_current "Projects", projects_path
         %li= link_to_unless_current "Users", users_path
         %li= link_to_unless_current "Profile", edit_user_path(current_user)
         %li= link_to "Log out", logout_path

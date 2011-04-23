@@ -1,0 +1,14 @@
+%h1 All projects
+
+= will_paginate
+%br
+%ul.users
+  - @projects.each do |project|
+    %li
+      = link_to project.name, project
+      - if current_user.admin? || current_user.id == project.user_id
+        = link_to " | delete", project, :method => :delete,
+                                        :confirm => "Are you sure?",
+                                        :title => "Delete #{project.name}"
+
+= will_paginate
