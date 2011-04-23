@@ -1,11 +1,11 @@
 .profile
   %h1= @title
-  .description
-    Description:
-    = @project.description
   .client
     Client:
     = @project.client
+  .description
+    Description:
+    = @project.description
   .wiki
     Wiki:
     = @project.wiki
@@ -18,3 +18,5 @@
   .admin
     Admin:
     = link_to @project.user.name, @project.user
+%br
+= link_to "edit", edit_project_path

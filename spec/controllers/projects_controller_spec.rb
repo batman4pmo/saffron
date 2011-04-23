@@ -169,4 +169,126 @@ describe ProjectsController do
 
     end
   end
+
+  describe "GET 'edit'" do
+
+    before(:each) do
+      user = Factory(:user)
+      test_log_in(user)
+      @project = user.projects.create(:name => "Test Project", :client => "Test Client")
+    end
+
+    it "should be successful" do
+      get :edit, :id => @project
+      response.should be_success
+    end
+
+    it "should have the right title" do
+      get :edit, :id => @project
+      response.should have_selector("title", :content => "Edit project")
+    end
+  end
+
+  describe "PUT 'update'" do
+
+    before(:each) do
+      user = Factory(:user)
+      test_log_in(user)
+      @project = user.projects.create(:name => "Test Project", :client => "Test Client")
+    end
+
+    describe "failure" do
+
+      before(:each) do
+        @attr = { :name => "", :client => "" }
+      end
+
+      it "should render the 'edit' page" do
+        put :update, :id => @project, :project => @attr
+        response.should render_template("edit")
+      end
+
+      it "should have the right title" do
+        put :update, :id => @project, :project => @attr
+        response.should have_selector("title", :content => "Edit project")
+      end
+    end
+
+    describe "success" do
+
+      before(:each) do
+        @attr = { :name => "New Project Name", :client => "New Client", :description => "New Description",
+                  :image => "www.image.com",   :wiki => "www.wiki.com", :issue_tracker => "www.issues.com" }
+      end
+
+      it "should change the project's attributes" do
+        put :update, :id => @project, :project => @attr
+        project = assigns(:project)
+        @project.reload
+        @project.name.should          == project.name
+        @project.client.should        == project.client
+        @project.description.should   == project.description
+        @project.image.should         == project.image
+        @project.wiki.should          == project.wiki
+        @project.issue_tracker.should == project.issue_tracker
+      end
+
+      it "should have a flash message" do
+        put :update, :id => @project, :project => @attr
+        flash[:success].should =~ /updated/i
+      end
+    end
+  end
+
+  describe "authentication of edit/update actions" do
+
+    before(:each) do
+      user = Factory(:user)
+      @project = user.projects.create(:name => "Test Project", :client => "Test Client")
+    end
+
+    describe "for non-logged in users" do
+
+      it "should deny access to 'edit'" do
+        get :edit, :id => @project
+        response.should redirect_to(login_path)
+        flash[:notice].should =~ /log in/i
+      end
+
+      it "should deny access to 'update'" do
+        put :update, :id => @project, :project => {}
+        response.should redirect_to(login_path)
+      end
+    end
+
+    describe "for logged-in users" do
+
+      before(:each) do
+        @wrong_user = Factory(:user, :email => "wrong.user@example.com")
+        test_log_in(@wrong_user)
+      end
+
+      it "should require a matching user for 'edit'" do
+        get :edit, :id => @project
+        response.should redirect_to(root_path)
+      end
+
+      it "should require a matching user for 'update'" do
+        put :update, :id => @project, :project => {}
+        response.should redirect_to(root_path)
+      end
+
+      it "should allow an admin access to 'edit'" do
+        @wrong_user.toggle!(:admin)
+        get :edit, :id => @project
+        response.should have_selector("title", :content => "Edit project")
+      end
+
+      it "should allow an admin access to 'update'" do
+        @wrong_user.toggle!(:admin)
+        put :update, :id => @project, :project => {:name => "New name", :client => "New client"}
+        flash[:success].should =~ /updated/i
+      end
+    end
+  end
 end

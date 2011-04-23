@@ -12,5 +12,6 @@
         = link_to " | delete", project, :method => :delete,
                                         :confirm => "Are you sure?",
                                         :title => "Delete #{project.name}"
+        = link_to " | edit", edit_project_path(project)
 
 = will_paginate

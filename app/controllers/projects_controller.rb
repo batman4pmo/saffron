@@ -1,5 +1,6 @@
 class ProjectsController < ApplicationController
   before_filter :authenticate
+  before_filter :project_owner, :only => [:edit, :update, :destroy]
 
   def index
     @projects = Project.all.paginate(:page => params[:page])
@@ -24,5 +25,26 @@ class ProjectsController < ApplicationController
       @title = "New project"
       render 'new'
     end
+  end
+
+  def edit
+    @project = Project.find(params[:id])
+    @title = "Edit project"
+  end
+
+  def update
+    @project = Project.find(params[:id])
+    if @project.update_attributes(params[:project])
+      redirect_to @project, :flash => {:success => "Project updated."}
+    else
+      @title = "Edit project"
+      render 'edit'
+    end
+  end
+
+  private
+  def project_owner
+    project = Project.find(params[:id])
+    redirect_to(root_path) unless current_user.admin? || current_user.id == project.user_id
   end
 end
