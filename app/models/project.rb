@@ -22,9 +22,6 @@ class Project < ActiveRecord::Base
   attr_accessible :name, :client, :description, :image, :wiki, :issue_tracker
 
   belongs_to :user
-  has_many :resources
-  has_many :environments
-  has_many :technologies
 
   validates :user_id,     :presence => true
 

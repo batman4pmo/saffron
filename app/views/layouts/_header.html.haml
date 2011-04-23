@@ -3,8 +3,6 @@
   %nav.round
     %ul
       %li= link_to_unless_current "Home", root_path
-      %li= link_to "Wiki", wiki_path, :target => "_blank"
-      %li= link_to "Contact", contact_path, :target => "_blank"
 
       - if current_user
         %li= link_to_unless_current "Users", users_path
